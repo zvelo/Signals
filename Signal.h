@@ -65,8 +65,8 @@ class Signal0 {
     }
 
     void Emit() const {
-      for (DelegateIterator i = delegateList.begin(); i != delegateList.end();) {
-        (*(i++))();
+      for (DelegateIterator i = delegateList.begin(); i != delegateList.end(); ++i) {
+        (*i)();
       }
     }
 
@@ -126,8 +126,8 @@ class Signal1 {
     }
 
     void Emit(Param1 p1) const {
-      for (DelegateIterator i = delegateList.begin(); i != delegateList.end();) {
-        (*(i++))(p1);
+      for (DelegateIterator i = delegateList.begin(); i != delegateList.end(); ++i) {
+        (*i)(p1);
       }
     }
 
@@ -187,8 +187,8 @@ class Signal2 {
     }
 
     void Emit(Param1 p1, Param2 p2) const {
-      for (DelegateIterator i = delegateList.begin(); i != delegateList.end();) {
-        (*(i++))(p1, p2);
+      for (DelegateIterator i = delegateList.begin(); i != delegateList.end(); ++i) {
+        (*i)(p1, p2);
       }
     }
 
@@ -248,8 +248,8 @@ class Signal3 {
     }
 
     void Emit(Param1 p1, Param2 p2, Param3 p3) const {
-      for (DelegateIterator i = delegateList.begin(); i != delegateList.end();) {
-        (*(i++))(p1, p2, p3);
+      for (DelegateIterator i = delegateList.begin(); i != delegateList.end(); ++i) {
+        (*i)(p1, p2, p3);
       }
     }
 
@@ -309,8 +309,8 @@ class Signal4 {
     }
 
     void Emit(Param1 p1, Param2 p2, Param3 p3, Param4 p4) const {
-      for (DelegateIterator i = delegateList.begin(); i != delegateList.end();) {
-        (*(i++))(p1, p2, p3, p4);
+      for (DelegateIterator i = delegateList.begin(); i != delegateList.end(); ++i) {
+        (*i)(p1, p2, p3, p4);
       }
     }
 
@@ -369,8 +369,8 @@ class Signal5 {
     }
 
     void Emit(Param1 p1, Param2 p2, Param3 p3, Param4 p4, Param5 p5) const {
-      for (DelegateIterator i = delegateList.begin(); i != delegateList.end();) {
-        (*(i++))(p1, p2, p3, p4, p5);
+      for (DelegateIterator i = delegateList.begin(); i != delegateList.end(); ++i) {
+        (*i)(p1, p2, p3, p4, p5);
       }
     }
 
@@ -430,8 +430,8 @@ class Signal6 {
     }
 
     void Emit(Param1 p1, Param2 p2, Param3 p3, Param4 p4, Param5 p5, Param6 p6) const {
-      for (DelegateIterator i = delegateList.begin(); i != delegateList.end();) {
-        (*(i++))(p1, p2, p3, p4, p5, p6);
+      for (DelegateIterator i = delegateList.begin(); i != delegateList.end(); ++i) {
+        (*i)(p1, p2, p3, p4, p5, p6);
       }
     }
 
@@ -491,8 +491,8 @@ class Signal7 {
     }
 
     void Emit(Param1 p1, Param2 p2, Param3 p3, Param4 p4, Param5 p5, Param6 p6, Param7 p7) const {
-      for (DelegateIterator i = delegateList.begin(); i != delegateList.end();) {
-        (*(i++))(p1, p2, p3, p4, p5, p6, p7);
+      for (DelegateIterator i = delegateList.begin(); i != delegateList.end(); ++i) {
+        (*i)(p1, p2, p3, p4, p5, p6, p7);
       }
     }
 
@@ -552,8 +552,8 @@ class Signal8 {
     }
 
     void Emit(Param1 p1, Param2 p2, Param3 p3, Param4 p4, Param5 p5, Param6 p6, Param7 p7, Param8 p8) const {
-      for (DelegateIterator i = delegateList.begin(); i != delegateList.end();) {
-        (*(i++))(p1, p2, p3, p4, p5, p6, p7, p8);
+      for (DelegateIterator i = delegateList.begin(); i != delegateList.end(); ++i) {
+        (*i)(p1, p2, p3, p4, p5, p6, p7, p8);
       }
     }
 

@@ -612,8 +612,6 @@ class DelegateMemento {
 
 #endif
 
-    virtual ~DelegateMemento() {}
-
   public:
 #if !defined(FASTDELEGATE_USESTATICFUNCTIONHACK)
     inline bool IsEqual(const DelegateMemento &x) const {
@@ -942,8 +940,6 @@ class Delegate0 {
       m_Closure.CopyFrom(this, x.m_Closure);
     }
 
-    virtual ~Delegate0() {}
-
     Delegate0& operator=(const Delegate0 &x) {
       m_Closure.CopyFrom(this, x.m_Closure);
       return *this;
@@ -1008,7 +1004,7 @@ class Delegate0 {
 
     // Invoke the delegate
     RetType operator() () const {
-    return (m_Closure.GetClosureThis()->*(m_Closure.GetClosureMemPtr()))();
+      return (m_Closure.GetClosureThis()->*(m_Closure.GetClosureMemPtr()))();
     }
 
     // Implicit conversion to "bool" using the safe_bool idiom
@@ -1057,7 +1053,7 @@ class Delegate0 {
 
   private:  // Invoker for static functions
     RetType InvokeStaticFunction() const {
-    return (*(m_Closure.GetStaticFunction()))();
+      return (*(m_Closure.GetStaticFunction()))();
     }
 };
 
@@ -1086,8 +1082,6 @@ class Delegate1 {
     : m_Closure() {
       m_Closure.CopyFrom(this, x.m_Closure);
     }
-
-    virtual ~Delegate1() {}
 
     Delegate1& operator=(const Delegate1 &x) {
       m_Closure.CopyFrom(this, x.m_Closure);
@@ -1201,7 +1195,7 @@ class Delegate1 {
 
   private:  // Invoker for static functions
     RetType InvokeStaticFunction(Param1 p1) const {
-    return (*(m_Closure.GetStaticFunction()))(p1);
+      return (*(m_Closure.GetStaticFunction()))(p1);
     }
 };
 
@@ -1230,8 +1224,6 @@ class Delegate2 {
     : m_Closure() {
       m_Closure.CopyFrom(this, x.m_Closure);
     }
-
-    virtual ~Delegate2() {}
 
     Delegate2& operator=(const Delegate2 &x) {
       m_Closure.CopyFrom(this, x.m_Closure);
@@ -1346,7 +1338,7 @@ class Delegate2 {
 
   private:  // Invoker for static functions
     RetType InvokeStaticFunction(Param1 p1, Param2 p2) const {
-    return (*(m_Closure.GetStaticFunction()))(p1, p2);
+      return (*(m_Closure.GetStaticFunction()))(p1, p2);
     }
 };
 
@@ -1375,8 +1367,6 @@ class Delegate3 {
     : m_Closure() {
       m_Closure.CopyFrom(this, x.m_Closure);
     }
-
-    virtual ~Delegate3() {}
 
     Delegate3& operator=(const Delegate3 &x) {
       m_Closure.CopyFrom(this, x.m_Closure);
@@ -1491,7 +1481,7 @@ class Delegate3 {
 
   private:  // Invoker for static functions
     RetType InvokeStaticFunction(Param1 p1, Param2 p2, Param3 p3) const {
-    return (*(m_Closure.GetStaticFunction()))(p1, p2, p3);
+      return (*(m_Closure.GetStaticFunction()))(p1, p2, p3);
     }
 };
 
@@ -1520,8 +1510,6 @@ class Delegate4 {
     : m_Closure() {
       m_Closure.CopyFrom(this, x.m_Closure);
     }
-
-    virtual ~Delegate4() {}
 
     Delegate4& operator=(const Delegate4 &x) {
       m_Closure.CopyFrom(this, x.m_Closure);
@@ -1587,7 +1575,7 @@ class Delegate4 {
 
     // Invoke the delegate
     RetType operator() (Param1 p1, Param2 p2, Param3 p3, Param4 p4) const {
-    return (m_Closure.GetClosureThis()->*(m_Closure.GetClosureMemPtr()))(p1, p2, p3, p4);
+      return (m_Closure.GetClosureThis()->*(m_Closure.GetClosureMemPtr()))(p1, p2, p3, p4);
     }
 
     // Implicit conversion to "bool" using the safe_bool idiom
@@ -1636,7 +1624,7 @@ class Delegate4 {
 
   private:  // Invoker for static functions
     RetType InvokeStaticFunction(Param1 p1, Param2 p2, Param3 p3, Param4 p4) const {
-    return (*(m_Closure.GetStaticFunction()))(p1, p2, p3, p4);
+      return (*(m_Closure.GetStaticFunction()))(p1, p2, p3, p4);
     }
 };
 
@@ -1665,8 +1653,6 @@ class Delegate5 {
     : m_Closure() {
       m_Closure.CopyFrom(this, x.m_Closure);
     }
-
-    virtual ~Delegate5() {}
 
     Delegate5& operator=(const Delegate5 &x) {
       m_Closure.CopyFrom(this, x.m_Closure);
@@ -1781,7 +1767,7 @@ class Delegate5 {
 
   private:  // Invoker for static functions
     RetType InvokeStaticFunction(Param1 p1, Param2 p2, Param3 p3, Param4 p4, Param5 p5) const {
-    return (*(m_Closure.GetStaticFunction()))(p1, p2, p3, p4, p5);
+      return (*(m_Closure.GetStaticFunction()))(p1, p2, p3, p4, p5);
     }
 };
 
@@ -1810,8 +1796,6 @@ class Delegate6 {
     : m_Closure() {
       m_Closure.CopyFrom(this, x.m_Closure);
     }
-
-    virtual ~Delegate6() {}
 
     Delegate6& operator=(const Delegate6 &x) {
       m_Closure.CopyFrom(this, x.m_Closure);
@@ -1926,7 +1910,7 @@ class Delegate6 {
 
   private:  // Invoker for static functions
     RetType InvokeStaticFunction(Param1 p1, Param2 p2, Param3 p3, Param4 p4, Param5 p5, Param6 p6) const {
-    return (*(m_Closure.GetStaticFunction()))(p1, p2, p3, p4, p5, p6);
+      return (*(m_Closure.GetStaticFunction()))(p1, p2, p3, p4, p5, p6);
     }
 };
 
@@ -1955,8 +1939,6 @@ class Delegate7 {
     : m_Closure() {
       m_Closure.CopyFrom(this, x.m_Closure);
     }
-
-    virtual ~Delegate7() {}
 
     Delegate7& operator=(const Delegate7 &x) {
       m_Closure.CopyFrom(this, x.m_Closure);
@@ -2022,7 +2004,7 @@ class Delegate7 {
 
     // Invoke the delegate
     RetType operator() (Param1 p1, Param2 p2, Param3 p3, Param4 p4, Param5 p5, Param6 p6, Param7 p7) const {
-    return (m_Closure.GetClosureThis()->*(m_Closure.GetClosureMemPtr()))(p1, p2, p3, p4, p5, p6, p7);
+      return (m_Closure.GetClosureThis()->*(m_Closure.GetClosureMemPtr()))(p1, p2, p3, p4, p5, p6, p7);
     }
 
     // Implicit conversion to "bool" using the safe_bool idiom
@@ -2071,7 +2053,7 @@ class Delegate7 {
 
   private:  // Invoker for static functions
     RetType InvokeStaticFunction(Param1 p1, Param2 p2, Param3 p3, Param4 p4, Param5 p5, Param6 p6, Param7 p7) const {
-    return (*(m_Closure.GetStaticFunction()))(p1, p2, p3, p4, p5, p6, p7);
+      return (*(m_Closure.GetStaticFunction()))(p1, p2, p3, p4, p5, p6, p7);
     }
 };
 
@@ -2100,8 +2082,6 @@ class Delegate8 {
     : m_Closure() {
       m_Closure.CopyFrom(this, x.m_Closure);
     }
-
-    virtual ~Delegate8() {}
 
     Delegate8& operator=(const Delegate8 &x) {
       m_Closure.CopyFrom(this, x.m_Closure);

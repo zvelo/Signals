@@ -6,6 +6,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "./Delegate.h"
 #include "./Signal.h"
@@ -24,18 +25,13 @@ class Button {
 
     virtual ~Button() {}
 
-    Signal0<void> update0;
-    Signal1<int> update1;
+    Signal0<void>       update0;
+    Signal1<int>        update1;
     Signal2<int, float> update2;
 
     void ClickButton(void) {
-      printf("update0\n");
       update0();
-
-      printf("update1\n");
       update1(1);
-
-      printf("update2\n");
       update2(2, 34.5);
     }
 };
@@ -61,7 +57,6 @@ class Label {
     }
 };
 
-
 class Label2 : public Label {
   public:
     virtual void Update0(void) const {
@@ -73,7 +68,6 @@ void Global(void) {
   printf("Global(void)\n");
 }
 
-
 int main() {
   Label l;
   Label2 l2;
@@ -83,8 +77,6 @@ int main() {
   Delegate1<int> delegate;
   delegate.Bind(&l, &Label::Update1);
   delegate(5);
-
-  printf("delegate done\n");
 
   // Connect a bunch of signals
   b.update0.Connect(&l, &Label::Update0);  // zero parameter
@@ -99,10 +91,13 @@ int main() {
   b.ClickButton();  // emit signals
 
   printf("Disconnect Update0, Update1 and Global\n");
-  b.update0.Disconnect(&l, &Label::Update0);
-  b.update0.Disconnect(&l2, &Label::Update0);
+
   b.update1.Disconnect(&l, &Label::Update1);
+  b.update0.Disconnect(&Label::Static);
   b.update0.Disconnect(&Global);
+  b.update0.Disconnect(&l2, &Label::Update0);
+  b.update2.Disconnect(&l, &Label::Update2);
+  b.update0.Disconnect(&l, &Label::Update0);
 
   b.ClickButton();  // emit signals again, shouldn't see disconnected slots firing
 
