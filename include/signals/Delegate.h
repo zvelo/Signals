@@ -598,6 +598,7 @@ class DelegateMemento {
   public:
 #if !defined(FASTDELEGATE_USESTATICFUNCTIONHACK)
     DelegateMemento() : m_pthis(0), m_pFunction(0), m_pStaticFunction(0) {}
+    virtual ~DelegateMemento() {}
 
     void clear() {
       m_pthis = 0; m_pFunction = 0; m_pStaticFunction = 0;
@@ -605,6 +606,7 @@ class DelegateMemento {
 
 #else
     DelegateMemento() : m_pthis(0), m_pFunction(0) {}
+    virtual ~DelegateMemento() {}
 
     void clear() {
       m_pthis = 0; m_pFunction = 0;
