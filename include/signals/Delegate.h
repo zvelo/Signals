@@ -198,7 +198,7 @@ inline OutputClass horrible_cast(const InputClass input) {
   // If the compile fails here, it means the compiler has peculiar
   // unions which would prevent the cast from working.
   typedef int ERROR_CantUseHorrible_cast[sizeof(InputClass) == sizeof(u)
-    && sizeof(InputClass) == sizeof(OutputClass) ? 1 : -1];
+    && sizeof(InputClass) == sizeof(OutputClass) ? 1 : -1] __attribute__((unused));
   u.in = input;
   return u.out;
 }
@@ -319,7 +319,7 @@ struct SimplifyMemFunc {
   inline static GenericClass *Convert(X*, XFuncType, GenericMemFuncType&) {
     // Unsupported member function type -- force a compile failure.
     // (it's illegal to have a array with negative size).
-    typedef char ERROR_Unsupported_member_function_pointer_on_this_compiler[N-100];
+    typedef char ERROR_Unsupported_member_function_pointer_on_this_compiler[N-100] __attribute__((unused));
     return 0;
   }
 };
@@ -376,7 +376,7 @@ struct SimplifyMemFunc< SINGLE_MEMFUNCPTR_SIZE + sizeof(int) > {  // NOLINT
       }s;
     } u;
     // Check that the horrible_cast will work
-    typedef int ERROR_CantUsehorrible_cast[sizeof(function_to_bind) == sizeof(u.s) ? 1 : -1];
+    typedef int ERROR_CantUsehorrible_cast[sizeof(function_to_bind) == sizeof(u.s) ? 1 : -1] __attribute__((unused));
     u.func = function_to_bind;
     bound_func = u.s.funcaddress;
     return reinterpret_cast<GenericClass *>(reinterpret_cast<char *>(pthis) + u.s.delta);
@@ -434,7 +434,7 @@ struct SimplifyMemFunc<SINGLE_MEMFUNCPTR_SIZE + 2 * sizeof(int) > {  // NOLINT
     // Check that the horrible_cast<>s will work
     typedef int ERROR_CantUsehorrible_cast[sizeof(function_to_bind) == sizeof(u.s)
       && sizeof(function_to_bind) == sizeof(u.ProbeFunc)
-      && sizeof(u2.virtfunc) == sizeof(u2.s) ? 1 : -1];
+      && sizeof(u2.virtfunc) == sizeof(u2.s) ? 1 : -1] __attribute__((unused));
     // Unfortunately, taking the address of a MF prevents it from being inlined, so
     // this next line can't be completely optimised away by the compiler.
     u2.virtfunc = &GenericVirtualClass::GetThis;
@@ -477,7 +477,7 @@ struct SimplifyMemFunc<SINGLE_MEMFUNCPTR_SIZE + 3 * sizeof(int) > {  // NOLINT
     // We can generate correct code in this case. To prevent an incorrect call from
     // ever being made, on MSVC6 we generate a warning, and call a function to
     // make the program crash instantly.
-    typedef char ERROR_VC6CompilerBug[-100];
+    typedef char ERROR_VC6CompilerBug[-100] __attribute__((unused));
     return 0;
   }
 };
@@ -508,7 +508,7 @@ struct SimplifyMemFunc<SINGLE_MEMFUNCPTR_SIZE + 3 * sizeof(int) > {  // NOLINT
       } s;
     } u;
     // Check that the horrible_cast will work
-    typedef int ERROR_CantUsehorrible_cast[sizeof(XFuncType) == sizeof(u.s) ? 1 : -1];
+    typedef int ERROR_CantUsehorrible_cast[sizeof(XFuncType) == sizeof(u.s) ? 1 : -1] __attribute__((unused));
     u.func = function_to_bind;
     bound_func = u.s.funcaddress;
     int virtual_delta = 0;
@@ -841,7 +841,7 @@ class ClosurePtr : public DelegateMemento {
       // Ensure that there's a compilation failure if function pointers
       // and data pointers have different sizes.
       // If you get this error, you need to #undef FASTDELEGATE_USESTATICFUNCTIONHACK.
-      typedef int ERROR_CantUseEvilMethod[sizeof(GenericClass *) == sizeof(function_to_bind) ? 1 : -1];  // NOLINT
+      typedef int ERROR_CantUseEvilMethod[sizeof(GenericClass *) == sizeof(function_to_bind) ? 1 : -1] __attribute__((unused));  // NOLINT
       m_pthis = horrible_cast<GenericClass *>(function_to_bind);
       // MSVC, SunC++ and DMC accept the following (non-standard) code:
       // m_pthis = static_cast<GenericClass *>(static_cast<void *>(function_to_bind));
@@ -857,7 +857,7 @@ class ClosurePtr : public DelegateMemento {
       // Ensure that there's a compilation failure if function pointers
       // and data pointers have different sizes.
       // If you get this error, you need to #undef FASTDELEGATE_USESTATICFUNCTIONHACK.
-      typedef int ERROR_CantUseEvilMethod[sizeof(UnvoidStaticFuncPtr) == sizeof(this) ? 1 : -1];
+      typedef int ERROR_CantUseEvilMethod[sizeof(UnvoidStaticFuncPtr) == sizeof(this) ? 1 : -1] __attribute__((unused));
       return horrible_cast<UnvoidStaticFuncPtr>(this);
     }
 
